@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerenciador de Produtos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container-header">
+      <h1>📦 Gerenciador de Produtos</h1>
+      <p class="subtitle">Sistema de Gestão de Produtos</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- SEÇÃO DO FORMULÁRIO -->
+      <section class="form-section">
+        <h2>Adicionar ou Editar Produto</h2>
+        <form id="produtoForm">
+
+          <!-- Campo: Nome -->
+          <div class="form-group">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Ex: Notebook Dell Inspiron" required />
+          </div>
+
+          <!-- Campo: Preço -->
+          <div class="form-group">
+            <label for="preco">Preço (R$):</label>
+            <input type="number" id="preco" name="preco" step="0.01"
+                   placeholder="0.00" min="0.01" required />
+          </div>
+
+          <!-- Campo: Estoque -->
+          <div class="form-group">
+            <label for="estoque">Estoque:</label>
+            <input type="number" id="estoque" name="estoque" min="0"
+                   placeholder="0" required />
+          </div>
+
+          <!-- Campo: Categoria -->
+          <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria"
+                   placeholder="Ex: Eletrônicos, Roupas, Alimentos" required />
+          </div>
+
+          <!-- Botões de ação -->
+          <div class="form-buttons">
+            <button type="submit" class="btn btn-primary">
+              Salvar Produto
+            </button>
+            <button type="button" class="btn btn-secondary" id="btnLimpar">
+              Limpar Formulário
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- SEÇÃO DE LISTAGEM -->
+      <section class="list-section">
+        <h2>Lista de Produtos</h2>
+
+        <!-- Controles -->
+        <div class="list-controls">
+          <button class="btn btn-success" id="btnRecarregar">
+            🔄 Recarregar Lista
+          </button>
+          <div class="search-box">
+            <select id="searchType" title="Tipo de busca">
+              <option value="nome">Buscar por Nome</option>
+              <option value="categoria">Buscar por Categoria</option>
+              <option value="id">Buscar por ID</option>
+            </select>
+            <input type="text" id="searchInput"
+                   placeholder="Digite o valor para buscar..." />
+            <button class="btn btn-primary" id="btnBuscar">Buscar</button>
+          </div>
+        </div>
+
+        <!-- Mensagens -->
+        <div id="loadingMessage" class="message message-info">
+          Carregando produtos...
+        </div>
+        <div id="emptyMessage" class="message message-info">
+          Nenhum produto cadastrado.
+        </div>
+        
+        <div id="produtosList" class="produtos-table-container"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 - Sistema de Gestão de Produtos</p>
+  </footer>
+
+  <!-- Modal de Mensagens -->
+  <div id="modalMessage" class="modal-message">
+    <div class="modal-content">
+      <p id="modalText"></p>
+      <button class="btn btn-primary" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
