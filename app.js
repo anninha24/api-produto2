@@ -43,6 +43,11 @@ app.get('/', (req, res) => {
   });
 });
 
+// rota padrão → abrir home
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/home.html');
+});
+
 // ============================================================
 // INICIAR SERVIDOR
 // ============================================================
